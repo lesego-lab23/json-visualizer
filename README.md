@@ -5,6 +5,10 @@
 
 The JSON Visualizer is a lightweight, web-based tool to easily explore and read JSON data. It combines a collapsible tree structure with tables for values, making nested objects and arrays much easier to understand at a glance.
 
+## Live Demo
+Check out the deployed JSON Visualizer here: [Try it Online](https://json-visualizer-indol.vercel.app/)
+
+
 ## Features
 🌳 Collapsible Tree: Expand/collapse each key to explore data hierarchically.
 
