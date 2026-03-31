@@ -16,5 +16,7 @@ The JSON Visualizer is a lightweight, web-based tool to easily explore and read 
 ## File Structure
 json-visualizer/
 ├── index.html       # Main HTML file
+
 ├── style.css        # Styles for dark theme, tree, and tables
+
 └── script.js        # JSON parsing and tree/table rendering
