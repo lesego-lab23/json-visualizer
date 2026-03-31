@@ -1,0 +1,152 @@
+/* Body and container */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+h1 {
+  color: #22c55e;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px; /* wider container */
+}
+
+textarea {
+  width: 100%;
+  min-height: 250px; /* taller textbox */
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 10px;
+  font-family: monospace;
+  font-size: 14px;
+  background: #020617;
+  color: #e2e8f0;
+  resize: vertical;
+}
+
+
+/* Button */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #22c55e;
+  color: black;
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* Error messages */
+.error {
+  color: #ef4444;
+  margin-bottom: 10px;
+}
+
+/* Tree container */
+.tree {
+  background: #020617;
+  padding: 15px;
+  border-radius: 8px;
+  font-family: monospace;
+  overflow-x: auto;
+}
+
+/* Node styling */
+.node {
+  position: relative;
+  margin-left: 20px;
+  padding-left: 10px;
+  margin-bottom: 4px;
+}
+
+/* Tree connector lines */
+.node::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #334155;
+}
+
+.node::after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 12px;
+  width: 10px;
+  height: 1px;
+  background: #334155;
+}
+
+/* Key and toggle styling */
+.key {
+  color: #22c55e;
+  font-weight: bold;
+}
+
+.toggle {
+  margin-right: 5px;
+  color: #facc15;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Primitive value types */
+.string { color: #22c55e; }
+.number { color: #38bdf8; }
+.boolean { color: #facc15; }
+.null { color: #ef4444; }
+
+/* Table styling */
+table {
+  border-collapse: collapse;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #334155;
+  padding: 6px 10px;
+  text-align: left;
+  font-family: monospace;
+  font-size: 14px;
+}
+
+th {
+  background-color: #1e293b;
+  color: #22c55e;
+  font-weight: bold;
+}
+
+/* Alternating row colors */
+tbody tr:nth-child(odd) {
+  background-color: #0f172a;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #111827;
+}
+
+/* Row hover effect */
+tbody tr:hover {
+  background-color: #1e293b;
+}
+
+/* Scrollable tables inside tree */
+.tree table {
+  max-width: 100%;
+  overflow-x: auto;
+}
