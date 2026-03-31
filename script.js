@@ -43,12 +43,10 @@ function renderNode(key, value) {
   node.appendChild(toggle);
   node.appendChild(keySpan);
 
-  // Container for the table
   const container = document.createElement("div");
   container.style.display = "none";
   container.style.marginTop = "5px";
 
-  // Only objects or arrays get a table
   if (typeof value === "object" && value !== null) {
     const table = document.createElement("table");
     const thead = document.createElement("thead");
@@ -56,23 +54,20 @@ function renderNode(key, value) {
 
     // Determine table headers
     if (Array.isArray(value)) {
-      // Array of primitives → Index & Value
-      if (value.length === 0 || typeof value[0] !== "object") {
-        ["Index", "Value"].forEach(h => {
+      if (value.length > 0 && typeof value[0] === "object") {
+        Object.keys(value[0]).forEach(h => {
           const th = document.createElement("th");
           th.textContent = h;
           trHead.appendChild(th);
         });
       } else {
-        // Array of objects → keys from first element
-        Object.keys(value[0]).forEach(h => {
+        ["Index", "Value"].forEach(h => {
           const th = document.createElement("th");
           th.textContent = h;
           trHead.appendChild(th);
         });
       }
     } else {
-      // Object → keys as headers
       Object.keys(value).forEach(h => {
         const th = document.createElement("th");
         th.textContent = h;
@@ -92,7 +87,11 @@ function renderNode(key, value) {
         if (typeof item === "object" && item !== null) {
           Object.keys(item).forEach(k => {
             const td = document.createElement("td");
-            td.textContent = item[k];
+            if (typeof item[k] === "object" && item[k] !== null) {
+              td.textContent = JSON.stringify(item[k]);
+            } else {
+              td.textContent = item[k];
+            }
             tr.appendChild(td);
           });
         } else {
@@ -109,7 +108,11 @@ function renderNode(key, value) {
       const tr = document.createElement("tr");
       Object.keys(value).forEach(k => {
         const td = document.createElement("td");
-        td.textContent = value[k];
+        if (typeof value[k] === "object" && value[k] !== null) {
+          td.textContent = JSON.stringify(value[k]);
+        } else {
+          td.textContent = value[k];
+        }
         tr.appendChild(td);
       });
       tbody.appendChild(tr);
@@ -118,7 +121,7 @@ function renderNode(key, value) {
     table.appendChild(tbody);
     container.appendChild(table);
   } else {
-    // Primitive value → just show in span
+    // Primitive value → show directly
     const valSpan = document.createElement("span");
     valSpan.className = typeof value;
     valSpan.textContent = value;
